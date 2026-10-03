@@ -328,8 +328,7 @@ for (let i = 0; ; i++) {
     <div className="min-h-screen bg-slate-950 text-white">
       <StudentSidebar />
 
-      <main className="ml-64 min-h-screen p-8">
-
+      <div className="ml-0 min-h-screen p-4 lg:ml-64 lg:p-8">
         {/* Header */}
         <div className="mb-8">
           <p className="mb-2 text-sm font-medium text-blue-400">
@@ -609,7 +608,7 @@ for (let i = 0; ; i++) {
 
         </div>
 
-      </main>
+      </div>
     </div>
   );
 }
