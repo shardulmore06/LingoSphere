@@ -43,13 +43,16 @@ export default function LoginPage() {
       return;
     }
 
-    await refreshProfile(data.user.id);
+    const { data: profile, error: profileError } = await supabase
+  .from('profiles')
+  .select('role')
+  .eq('id', data.user.id)
+  .maybeSingle();
 
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', data.user.id)
-      .maybeSingle();
+console.log('LOGIN PROFILE:', profile);
+console.log('PROFILE ERROR:', profileError);
+
+await refreshProfile(data.user.id);
 
     toast({ title: 'Welcome back!' });
     router.push(profile?.role === 'admin' ? '/admin' : '/dashboard');
